@@ -2,4 +2,7 @@ RNA-SEQ
 =============
 
 
-Here we go...
+First you need to check that the following tools are installed.
+
+Samtools
+

@@ -34,7 +34,7 @@ It will make things easier then for installing tools or switching to older pytho
 
 _Conda_** : [here](https://www.continuum.io/downloads)
 
-## Set up ConfigFile for alignment only
+## Set up ConfigFile.json for alignment only
 
 ---
 
@@ -64,8 +64,8 @@ Depending on your library type , you should pick first or second column.
 Select the output according to the strandedness of your data.
 Here kit used for library preparation is of type directional first strand that means R2 is always forward.
 The second read (read 2) is from the original RNA strand/template, first read (read 1) is from the opposite strand. 
-Tcheck to get more details on the library preparation.[here](https://www.youtube.com/watch?v=n2XEsw7EJLw&feature=youtu.be) 
-Here[http://chipster.csc.fi/manual/library-type-summary.html)
+Tcheck to get more details on the library preparation.[Here](https://www.youtube.com/watch?v=n2XEsw7EJLw&feature=youtu.be) 
+[Here](http://chipster.csc.fi/manual/library-type-summary.html)
 
 Select second column which name is *GoodPairs(F2R1+/F1R2-)*
 At the end, it should like what follows :
@@ -81,10 +81,11 @@ At the end, it should like what follows :
 ---
 
 This will create a file named *statistics* in you current directory with :
-1.nameOfYourSample
-2.Input Reads
-3.Uniquely Mapped (%)
-4.Multimapping (%)
+
+1. NameOfYourSample
+2. Input Reads
+3. Uniquely Mapped (%)
+4. Multimapping (%)
 
 ```shell
 python3 pathTo/computeStatistics.py -d pathToDirOfSample -n nameOfYourSample

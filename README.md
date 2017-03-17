@@ -60,6 +60,7 @@ python3 pathTo/align_V1.py -c pathToConfigFile/condition.json
 You need to use this on each sample/replicate.
 
 You have to manually grap each *read count per Gene* column to make only file.
+Sort each file by geneName column before joining.
 Depending on your library type , you should pick first or second column.
 Select the output according to the strandedness of your data.
 Here kit used for library preparation is of type directional first strand that means R2 is always forward.
@@ -95,3 +96,33 @@ You need to use this on each sample/replicate.
 
 ## Gene Expression Analysis
 
+First, you need to create a csv file describing your experiments.
+Column name can be changed but then you need to make changes directly inside code.
+*Sample_id* and *condition* columns are mandatory.
+It should looks as follows :
+
+| sample_id  | condition    | group  |
+| ---   |:---:| ---: | 
+| Cond1rep1 | Cond1 | 2016  | 
+| Cond1rep2 | Cond1   |  2016   | 
+| Cond1rep1 | Cond1  |  2015  |
+
+This will be your first input.
+Then you will pass also the matrice containing all your reads count per gene and per sample.You did that the step before.
+You have to give the names of the condition you want to compare between each others.
+
+```R
+diff_expRscript ${PATH_TO_SCRIPT}/diff_exp.R  --dir ${PATH_TO_DATA}/[DIR_NAME] --cond1 [COND1]  --cond2 [COND2]  ${PATH_TO_DATA}/[DESIGN.csv] ${PATH_TO_DATA}/[GENE_READ_COUNT.csv] > ${PATH_TO_DATA}/logR/[ANY_NAME].out
+```
+This script will give you list of differentially expressed genes with fold changes and associated pvalues. Graphics ( PCA plot, Heatmap, Histogram , ...) that describes quality of your data will also be created.
+One file with all pvalue and fc will be created per comparison.
+
+You can merge all this files into one. You need first to sort them by gene ensembl id column to be sure the fusion will be correct.
+
+Note : There is also others text files created which already apply filter on the foldchange(log2FC > 1.5) .You can change that directly in the code if you want.
+
+```R
+merged_all_FC_files ${PATH_TO_SCRIPT}/merged_all_FC_files.R  --dir ${PATH_TO_DATA}/[DIR_OUTPUT]  
+```
+You need to modify inside the code the path to the files because they are hard-coded.
+At the end, it will create a file (*FC_collapse_with_pval.csv*) in the directory you passed as parameter.

@@ -38,6 +38,10 @@ It will make things easier then for installing tools or switching to older pytho
 
 _**Conda**_ : [here](https://www.continuum.io/downloads)
 
+_**Salmon**_ : Compute TPM values from fastq [here](https://github.com/COMBINE-lab/salmon)
+
+_**LiftOver**_ : Include in KentTools suite. Lift Over is used to transform coordinates between several genome build [here](http://hgdownload.soe.ucsc.edu/downloads.html#source_downloads)
+
 _**WiggleTools**_ : _Optionnal_ , can be useful when you want to merge bigwig files and apply some basic numerical operations [here](https://github.com/Ensembl/WiggleTools)
 
 ## Set up ConfigFile.json
